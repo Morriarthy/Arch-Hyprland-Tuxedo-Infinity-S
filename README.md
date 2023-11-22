@@ -10,3 +10,6 @@ Packages which need to be installed after installing Arch Linux.
 - ...
 
 # More will follow while I am tinkering around and installing.
+> [!IMPORTANT]
+> Install script will auto-detect nvidia card and install nvidia-dkms drivers for your kernel.
+> So please ensure that your Nvidia card supports [dkms](https://wiki.archlinux.org/title/NVIDIA) drivers and hyprland.

@@ -15,6 +15,10 @@ Packages which need to be installed after installing Arch Linux.
 - libva
 - hyprland
 - polkit-hyprland
+### needed for Screenshots
+- grim
+- slurp
+- swappy
 
 # More will follow while I am tinkering around and installing.
 > [!IMPORTANT]

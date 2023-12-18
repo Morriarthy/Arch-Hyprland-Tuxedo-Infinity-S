@@ -19,6 +19,8 @@ Packages which need to be installed after installing Arch Linux.
 - grim
 - slurp
 - swappy
+### additionally useful packages
+- ntfs-g3
 
 # More will follow while I am tinkering around and installing.
 > [!IMPORTANT]

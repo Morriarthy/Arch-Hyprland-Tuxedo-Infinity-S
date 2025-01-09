@@ -1,0 +1,186 @@
+{
+     "layer": "top", // Waybar at top layer
+    //"position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 32, // Waybar height (to be removed for auto height)
+	"fixed-center": true,
+	"margin-top": 2,  
+    // "width": 1280, // Waybar width
+    "spacing": 4, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": ["disk", "disk#DISK2", "cpu", "memory", "keyboard-state", "temperature", "hyprland/window" ],
+    "modules-center": ["hyprland/scratchpad", "hyprland/workspaces", "hyprland/mode"],
+    "modules-right": ["custom/updater", "network", "hyprland/language", "tray", "idle_inhibitor", "backlight", "pulseaudio", "clock", "battery", "custom/power"],
+    // Modules configuration
+
+     "hyprland/workspaces": {
+         "disable-scroll": true,
+		 "on-click": "activate",
+         "all-outputs": true,
+         "format": "{name}: {icon}",
+         "format-icons": {
+             "1": "  ",
+             "2": "  ",
+             "3": "  ",
+             "4": "  ",
+             "5": "  ",
+             "6": "  ",
+             "7": "  ",
+             "8": "  ",
+             "9": "  ",
+			 "10": "󰺵 ",
+             "urgent": "  ",
+             "focused": "  ",
+             "default": "  "
+         }
+     },
+
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": " {name}  {icon} ",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+
+	// waybar-disk: /
+    "disk": {
+		 "disk": "DISK1",
+		 "path": "/",
+         "interval": 30,
+         "format": "{free} free on   ",
+    },
+
+	// waybar-disk: /home
+    "disk#DISK2": {
+		 "disk": "DISK2",
+		 "path": "/home/",
+         "interval": 30,
+         "format": "{free} free on  󰋜 ",
+    },
+
+    "hyprland/language": {
+       	"format": "{}  ",
+		"format-en": "US",
+		"format-de": "DE",
+		"format-fi": "FI",
+		"tooltip": "false",
+		"on-click": "$HOME/.config/hypr/scripts/switch_keyboard-layout.sh"
+    },
+    	
+    "wlr/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+
+	"hyprland/window": {
+	 	"separate-outputs": true
+	},
+
+	// updater-custom
+	"custom/updater":{
+        "format": " {}  ",
+        "exec": "checkupdates | wc -l",
+        "exec-if": "[[ $(checkupdates | wc -l) ]]",
+        "interval": 15,
+        "on-click": "kitty -e sudo pacman -Syu && paru -Syu && notify-send 'The system has been updated' "
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": " ",
+            "deactivated": " "
+						}
+	},
+
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+
+   "clock": {                                                                    
+     "interval": 1,                                                              
+     //"format": "  {:%I:%M %p}",                                                
+     "format": " {:%H:%M - %A}    ",                                                  
+     "format-alt": " {:%A ,  %d %B %Y}   ",                                
+     "tooltip-format": "<tt><small>{calendar}</small></tt>",
+	 //"tooltip-format": "\n<span size='10pt' font='Rajdhani'>{calendar}</span>",                     
+
+     "calendar": {                                                               
+       "mode"          : "month",                                                 
+       "mode-mon-col"  : 3,                                                      
+       "weeks-pos"     : "right",                                                
+       "on-scroll"     : 1,                                                      
+       "format": {                                                               
+       "months":     "<span color='#ffffff' size='14pt' font='Rajdhani'><b>{}</b></span>",                   
+       "days":       "<span color='#211f1f' size='11pt' ><b>{}</b></span>",                   
+       "weeks":      "<span color='#808080' size='13pt' font='Rajdhani'><b>W{}</b></span>",                  
+       "weekdays":   "<span color='#808080' size='11pt' ><b><u>{}</u></b></span>",                   
+       "today":      "<span color='#ffead3' size='11pt'><b>{}</b></span>"             
+                 }                                                               
+                 }                                                               
+     },
+
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": true,
+		 "tooltip-format": "   LOAD: {usage}%",
+//
+// Configure btop on Click here:
+//
+        "on-click": "kitty -e btop"
+    },
+
+    "memory": {
+        "format": "{}%  ",
+        "on-click": "kitty -e btop"
+    },
+
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": [""]
+    },
+
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%)   ",
+        "format-ethernet": "{ipaddr}/{cidr}   ",
+        "tooltip-format": "{ifname} via {gwaddr}   ",
+        "format-linked": "{ifname} (No IP)   ",
+        "format-disconnected": "Disconnected  ⚠ ",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "on-click": "nm-applet"
+    },
+
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source} ",
+        "format-source": "{volume}%  ",
+        "format-source-muted": " ",
+        "format-icons": {
+            "headphone": "  ",
+            "hands-free": "  ",
+            "headset": "  ",
+            "phone": "  ",
+            "portable": "  ",
+            "car": "  ",
+            "default": ["  ", "  ", "  "]
+        },
+        "on-click": "pavucontrol"
+    },
+   
+    "custom/power": {
+         "format": "  ",
+         "tooltip": false,
+    //     "on-click": "$HOME/.config/hypr/scripts/wlogout",
+		 "on-click": "sleep 0.1 && ~/.config/hypr/scripts/powermenu.sh",
+	},
+}

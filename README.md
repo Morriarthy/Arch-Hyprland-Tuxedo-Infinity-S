@@ -16,7 +16,7 @@ Packages which need to be installed after installing Arch Linux.
 - qt5ct
 - libva
 - hyprland
-- xwaylandvideobridge // for screensharing
+- xwaylandvideobridge // for screensharing (see tules.conf in hypr)
 - hyprpaper // for wallpapers
 - hyprutils
 - hyprlang

@@ -184,3 +184,4 @@
 		 "on-click": "sleep 0.1 && ~/.config/hypr/scripts/powermenu.sh",
 	},
 }
+

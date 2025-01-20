@@ -35,21 +35,22 @@ border: 5px solid #36322f;
   color: white;
 }
 
+
+
 #entry:selected {
-  background-color: #36322f;
+/*  background-color: #36322f; */ 
+  background-color: #211f1f;
 }
 
 #text:selected {
   text-decoration-color: white;
 }
+ expander > list > #entry {
+	color: white;
+    background-color: #36322f;
+	transition: background-color 0.3s; /* Weicher Übergang bei Hover */
+	}
 
-#scroll {
-	margin: 5px;
-    background-color: #36322f; /* Gleiche Hintergrundfarbe wie #input */
-    color: white;
-    border: 1px solid #36322f; /* Gleiche Farbe wie #input Border */
-}
-expander > list > #entry {
-  color: white;
-  background-color: #36322f;
+expander > list > #entry:hover {
+    background-color: #211f1f; /* Hover-Effekt */
 }

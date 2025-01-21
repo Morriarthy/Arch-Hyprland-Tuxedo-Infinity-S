@@ -69,10 +69,10 @@
 		"on-click": "$HOME/.config/hypr/scripts/switch_keyboard-layout.sh"
     },
 	
-	// custom/nvidia
-	"custom-nvidia": {
-    "format": "GPU: {output} W",
-    "exec": "~/.config/hypr/scripts/nvidia.sh",
+	// Show the power consumtion of the GPU
+	"custom/nvidia": {
+    "format": "GPU: {} W  ",
+    "exec": "$HOME/.config/waybar/nvidia.sh",
     "interval": 10
 	},
     	
